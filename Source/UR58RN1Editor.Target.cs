@@ -11,5 +11,7 @@ public class UR58RN1EditorTarget : TargetRules
 		DefaultBuildSettings = BuildSettingsVersion.V7;
 		IncludeOrderVersion = EngineIncludeOrderVersion.Unreal5_8;
 		ExtraModuleNames.Add("UR58RN1");
+        bOverrideBuildEnvironment = true;
+        AdditionalCompilerArguments = "/wd4456";
 	}
 }

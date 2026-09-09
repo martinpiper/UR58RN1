@@ -1,0 +1,135 @@
+/* The Plane object */
+object Plane
+{
+/* The Plane uses these types of data blocks. The Predict_Float for the position and rotation and the NData block */
+/* The NData block does not have any interpolation or prediction filters attached and effectively copies the data type */
+/* from one class to the class replicas */
+	datablock Predict_Float;
+	datablock NData;
+	datablock Function;
+
+	extern AMemberFunction(float);
+
+/* The same as the Camera object, we define which member variables from the Plane class can be accessed by ReplicaNet */
+	networking
+	{
+/* Notice that the minimum and maximum errors are quite strict for this object, this is because the object needs a */
+/* good balance between network bandwidth and actual displayed accuracy on screen */
+/* You can try changing the Quadratic(); to Linear(); to see the difference this makes */
+/* Also try changing the error and distance values to get a feel for how smaller errors lead to high bytes/second being transmitted */
+
+// Try adding this line, remove the comment, to each of the position DataBlock definitions to see the effect of using SetUpdateDelayMinimum()
+// This stops the plane position updating due to DataBlock filter updates until 2 seconds has passed.
+//	SetUpdateDelayMinimum(2.0f);
+
+// Try adding these two lines, remove the comments, to each of the position DataBlock definitions to see the effect of using SetForceSendMaximumUpdates()
+// This forces 10 extra updates after each DataBlock filter update at a delay of 0.01 of a second. The result of this is that
+// the bandwidth used is much higher for each plane.
+//	SetForceSendTimeDelay(0.01f);
+//	SetForceSendMaximumUpdates(10);
+
+		Function AMemberFunction
+		{
+			Reliable;
+		}
+
+		Predict_Float mPosition.x;
+		{
+			SetMinError(0.5f);
+			SetMinDistance(50.0f);
+			SetMaxError(10.5f);
+			SetMaxDistance(200.0f);
+			Quadratic();
+
+			SetSnapToDifference(10.0f);
+
+//			SetUpdateDelayMinimum(2.0f);
+//			SetForceSendTimeDelay(0.01f);
+//			SetForceSendMaximumUpdates(10);
+
+			SetDeltaShortFloat();
+		}
+		Predict_Float mPosition.y;
+		{
+			SetMinError(0.5f);
+			SetMinDistance(50.0f);
+			SetMaxError(10.5f);
+			SetMaxDistance(200.0f);
+			Quadratic();
+
+			SetSnapToDifference(10.0f);
+
+//			SetUpdateDelayMinimum(2.0f);
+//			SetForceSendTimeDelay(0.01f);
+//			SetForceSendMaximumUpdates(10);
+
+			SetDeltaShortFloat();
+		}
+		Predict_Float mPosition.z;
+		{
+			SetMinError(0.5f);
+			SetMinDistance(50.0f);
+			SetMaxError(10.5f);
+			SetMaxDistance(200.0f);
+			Quadratic();
+
+			SetSnapToDifference(10.0f);
+
+//			SetUpdateDelayMinimum(2.0f);
+//			SetForceSendTimeDelay(0.01f);
+//			SetForceSendMaximumUpdates(10);
+
+			SetDeltaShortFloat();
+		}
+
+		Predict_Float mRotation.x;
+		{
+			SetMinError(0.01f);
+			SetMinDistance(0.1f);
+			SetMaxError(0.15f);
+			SetMaxDistance(50.0f);
+			Quadratic();
+
+			SetSnapToDifference(0.1f);
+
+			SetDeltaShortFloat();
+		}
+		Predict_Float mRotation.y;
+		{
+			SetMinError(0.01f);
+			SetMinDistance(0.1f);
+			SetMaxError(0.15f);
+			SetMaxDistance(50.0f);
+			Quadratic();
+
+			SetSnapToDifference(0.1f);
+
+			SetDeltaShortFloat();
+		}
+		Predict_Float mRotation.z;
+		{
+			SetMinError(0.01f);
+			SetMinDistance(0.1f);
+			SetMaxError(0.15f);
+			SetMaxDistance(50.0f);
+			Quadratic();
+
+			SetSnapToDifference(0.1f);
+
+			SetDeltaShortFloat();
+		}
+
+/* Here the NData type is used. Whenever the values changes it is transmitted to each replica */
+		NData mPlayerNumber;
+		{
+/* This sets this particular member variable to be sent using a reliable packet */
+			Reliable();
+		}
+		NData mPlayerColour;
+		{
+			Reliable();
+		}
+/* This variable need not be transmitted with a reliable packet as it is only an approximate that needs to be displayed on another players screen for example */
+		NData mPlayerEnergy;
+	}
+}

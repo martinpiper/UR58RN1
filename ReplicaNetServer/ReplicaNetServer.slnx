@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="ReplicaNetServer/ReplicaNetServer.vcxproj" Id="5060d523-a66a-4334-975b-a1e2345071f0" />
+</Solution>

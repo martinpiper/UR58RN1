@@ -4,9 +4,9 @@
 // Define this to use multi-threading
 #define RNUSETHREAD
 // Define this to remove RNLobby code from the compilation.
-//#define REPLICANET_REMOVE_RNLOBBY
+#define REPLICANET_REMOVE_RNLOBBY
 // Define this to remove ProductPatcher code from the compilation.
-//#define REPLICANET_REMOVE_PRODUCTPATCHER
+#define REPLICANET_REMOVE_PRODUCTPATCHER
 // Tells the code below it is amalgamated
 #define REPLICANET_AMALGATED
 // Switches off CRT and PDB warnings for Microsoft compilers
@@ -4962,6 +4962,8 @@ static bool isthreaded = false;
 #endif
 #endif
 
+namespace RNReplicaNet
+{
 bool PlatformInfo::IsThreaded(void)
 {
 	return isthreaded;
@@ -5038,6 +5040,7 @@ int PlatformInfo::GetNumberOfCores(void)
 		}
 	}
 	return ret;
+}
 }
 //From: RNPlatform/sys_time.cpp
 /* START_LICENSE_HEADER
@@ -6094,7 +6097,7 @@ Thread::~Thread()
 //static DWORD WINAPI ThreadEntry(LPVOID lpThreadParameter)
 static unsigned __stdcall ThreadEntry(void *lpThreadParameter)
 {
-	if (PlatformInfo::IsThreaded())
+	if (RNReplicaNet::PlatformInfo::IsThreaded())
 	{
 		return Thread::CallThreadEntry((ThreadClass *) lpThreadParameter);
 	}

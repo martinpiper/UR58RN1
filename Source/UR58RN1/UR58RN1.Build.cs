@@ -25,6 +25,8 @@ public class UR58RN1 : ModuleRules
 
 		PublicIncludePaths.AddRange(new string[] {
 			"UR58RN1",
+			"UR58RN1/ReplicaNetPublic/Includes",
+			"UR58RN1/ReplicaNetGlue",
 			"UR58RN1/Variant_Platforming",
 			"UR58RN1/Variant_Platforming/Animation",
 			"UR58RN1/Variant_Combat",
@@ -40,12 +42,14 @@ public class UR58RN1 : ModuleRules
 			"UR58RN1/Variant_SideScrolling/UI"
 		});
 
-		// Uncomment if you are using Slate UI
-		// PrivateDependencyModuleNames.AddRange(new string[] { "Slate", "SlateCore" });
+        PublicDefinitions.Add("_CRT_SECURE_NO_WARNINGS");
 
-		// Uncomment if you are using online features
-		// PrivateDependencyModuleNames.Add("OnlineSubsystem");
+        // Uncomment if you are using Slate UI
+        // PrivateDependencyModuleNames.AddRange(new string[] { "Slate", "SlateCore" });
 
-		// To include OnlineSubsystemSteam, add it to the plugins section in your uproject file with the Enabled attribute set to true
-	}
+        // Uncomment if you are using online features
+        // PrivateDependencyModuleNames.Add("OnlineSubsystem");
+
+        // To include OnlineSubsystemSteam, add it to the plugins section in your uproject file with the Enabled attribute set to true
+    }
 }
