@@ -27,6 +27,7 @@ extern std::set<GameObject *> gGameObjects;
 extern RNReplicaNet::ReplicaNet* gNetwork;
 
 void NetworkClientInit(void);
+void NetworkClientDisconnect(void);
 
 typedef struct D3DXVECTOR4
 {

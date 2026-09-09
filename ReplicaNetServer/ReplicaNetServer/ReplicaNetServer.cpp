@@ -42,17 +42,23 @@ int main()
 		object->mPosScaleX = distribScaleX(gen);
 		object->mPosScaleY = distribScaleY(gen);
 		object->mPosScaleZ = distribScaleZ(gen);
-		object->mTimeScaleX = 1.0f / (distribScaleX(gen) + 10.0f);
-		object->mTimeScaleY = 1.0f / (distribScaleY(gen) + 10.0f);
-		object->mTimeScaleZ = 1.0f / (distribScaleZ(gen) + 10.0f);
+		object->mTimeScaleX = 10.0f / (distribScaleX(gen) + 10.0f);
+		object->mTimeScaleY = 10.0f / (distribScaleY(gen) + 10.0f);
+		object->mTimeScaleZ = 10.0f / (distribScaleZ(gen) + 10.0f);
 		object->SetPosition(D3DXVECTOR4(distribPosX(gen), distribPosY(gen), distribPosZ(gen), 0));
 		object->Publish();
 	}
 
+	RNReplicaNet::SysTime timer;
+
 	while (true)
 	{
-		Sleep(1000);
-		printf("Time %f send %f recv %f\n" , gNetwork->GetTime(), gNetwork->GetNetworkSendRate(), gNetwork->GetNetworkReceiveRate());
+		Sleep(50);
+		if (timer.FloatTime() > 1.0f)
+		{
+			printf("Time %f send %f recv %f\n", gNetwork->GetTime(), gNetwork->GetNetworkSendRate(), gNetwork->GetNetworkReceiveRate());
+			timer.Reset();
+		}
 		PollGameOjects();
 		gNetwork->ProcessDataBlockUpdate();
 	}

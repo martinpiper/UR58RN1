@@ -47,6 +47,16 @@ void NetworkClientInit(void)
 	}
 }
 
+void NetworkClientDisconnect(void)
+{
+	if (gNetwork)
+	{
+		gNetwork->Disconnect();
+		delete gNetwork;
+		gNetwork = 0;
+	}
+}
+
 GameObject::GameObject() : mDeleteMe(false) , mReplica(0) , mOwned(false)
 {
 	// Lock our own object list on delete
@@ -82,6 +92,11 @@ void GameObject::Delete(void)
 
 GameObject* FindUnownedGameObject(void)
 {
+	if (!gNetwork)
+	{
+		return 0;
+	}
+
 	GameObject* ret = 0;
 	// Lock our own object list on delete
 	gNetwork->LockObjects();

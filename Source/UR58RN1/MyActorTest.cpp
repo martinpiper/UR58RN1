@@ -22,6 +22,14 @@ void AMyActorTest::BeginPlay()
 
 }
 
+void AMyActorTest::EndPlay(const EEndPlayReason::Type EndPlayReason)
+{
+	mNetworkObject = 0;
+	NetworkClientDisconnect();
+
+	Super::EndPlay(EndPlayReason);
+}
+
 // Called every frame
 void AMyActorTest::Tick(float DeltaTime)
 {
