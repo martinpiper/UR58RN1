@@ -10,6 +10,8 @@ object Plane
 
 	extern AMemberFunction(float);
 
+	Reliable;
+
 /* The same as the Camera object, we define which member variables from the Plane class can be accessed by ReplicaNet */
 	networking
 	{

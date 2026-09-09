@@ -11,6 +11,7 @@ class _RO_Plane : public RNReplicaNet::ReplicaObject
 	_RO_DO_DEFBLOCK_FUNCTION_VAR(AMemberFunction)
 	void Call_AMemberFunction(float);
 	typedef void(tDBFV_AMemberFunction)(float);
+_RO_DO_REPLICAOBJECT_MAKERELIABLE()
 	_RO_DEF_REGISTERDATABLOCKS(Plane)
 };
 #endif
