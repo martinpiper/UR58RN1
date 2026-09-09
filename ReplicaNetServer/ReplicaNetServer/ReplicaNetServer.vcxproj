@@ -74,7 +74,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>SERVER_CODE;_CRT_SECURE_NO_WARNINGS;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalIncludeDirectories>$(SolutionDir)..\Source\UR58RN1\ReplicaNetGlue;$(SolutionDir)..\Source\UR58RN1\ReplicaNetPublic;$(SolutionDir)..\Source\UR58RN1\ReplicaNetPublic\Includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -93,7 +93,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>SERVER_CODE;_CRT_SECURE_NO_WARNINGS;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalIncludeDirectories>$(SolutionDir)..\Source\UR58RN1\ReplicaNetGlue;$(SolutionDir)..\Source\UR58RN1\ReplicaNetPublic;$(SolutionDir)..\Source\UR58RN1\ReplicaNetPublic\Includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -110,7 +110,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>SERVER_CODE;_CRT_SECURE_NO_WARNINGS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalIncludeDirectories>$(SolutionDir)..\Source\UR58RN1\ReplicaNetGlue;$(SolutionDir)..\Source\UR58RN1\ReplicaNetPublic;$(SolutionDir)..\Source\UR58RN1\ReplicaNetPublic\Includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -129,7 +129,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>SERVER_CODE;_CRT_SECURE_NO_WARNINGS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalIncludeDirectories>$(SolutionDir)..\Source\UR58RN1\ReplicaNetGlue;$(SolutionDir)..\Source\UR58RN1\ReplicaNetPublic;$(SolutionDir)..\Source\UR58RN1\ReplicaNetPublic\Includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -149,6 +149,7 @@
     <ClCompile Include="..\..\Source\UR58RN1\ReplicaNetGlue\_Def_Example1.cpp" />
     <ClCompile Include="..\..\Source\UR58RN1\ReplicaNetGlue\_RO_Plane.cpp" />
     <ClCompile Include="ReplicaNetServer.cpp" />
+    <ClCompile Include="ServerPlane.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\UR58RN1\ReplicaNetGlue\GameObject.h" />

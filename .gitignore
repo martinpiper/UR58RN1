@@ -73,3 +73,4 @@ Plugins/**/Intermediate/*
 # Cache files for the editor to use
 DerivedDataCache/*
 /ReplicaNetServer/ReplicaNetServer/x64
+/ReplicaNetServer/x64

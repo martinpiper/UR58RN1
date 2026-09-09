@@ -17,26 +17,10 @@ in the ROL file for this class are automatically updated when this object is all
 #include "Plane.h"
 #include "RNReplicaNet/Inc/ReplicaNet.h"
 
-#ifndef PI
-#define PI 3.14159265358979323846
-#endif
-
-double degreesToRadians(double degrees)
-{
-	return degrees * PI / 180.0;
-}
-
-
+#ifndef SERVER_CODE
 Plane::Plane()
 {
 	mReplica = this;		// Setup our forward reference pointer
-	mPosition = D3DXVECTOR4(0,0,0,0);
-	mRotation = D3DXVECTOR4(0,0,0,0);
-
-	mPlayerNumber = rand() & 7;
-	mPlayerColour = rand() & 7;
-	mPlayerEnergy = 1.0f;
-	mFunctionXRot = 0.0f;
 }
 
 Plane::~Plane()
@@ -45,20 +29,8 @@ Plane::~Plane()
 
 void Plane::PollIt(void)
 {
-	// Only run the "physics" if we are a master object
-	if (!IsMaster())
-	{
-		return;
-	}
-
-	double time = GetBoundReplicaNet()->GetTime() + mTimeOffset;
-
-	mPosition.x = mOriginalPosition.x + float(sin(time * mTimeScaleX) * mPosScaleX);
-	mPosition.y = mOriginalPosition.y + float(sin(time * mTimeScaleY) * mPosScaleY);
-	mPosition.z = mOriginalPosition.z + float(cos(time * mTimeScaleZ) * mPosScaleZ);
-
-	mRotation.y = float(time * 10.0f);
 }
+#endif
 
 /*
 This callback is used by the distance based prediction to calculate the distance to another object in our game

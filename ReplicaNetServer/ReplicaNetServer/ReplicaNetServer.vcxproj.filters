@@ -33,6 +33,9 @@
     <ClCompile Include="..\..\Source\UR58RN1\ReplicaNetGlue\_RO_Plane.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ServerPlane.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\UR58RN1\ReplicaNetGlue\GameObject.h">
