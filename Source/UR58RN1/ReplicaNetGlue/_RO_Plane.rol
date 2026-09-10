@@ -10,7 +10,7 @@ object Plane
 
 	extern AMemberFunction(float);
 
-	Reliable;
+	Certain;
 
 /* The same as the Camera object, we define which member variables from the Plane class can be accessed by ReplicaNet */
 	networking
@@ -133,5 +133,7 @@ object Plane
 		}
 /* This variable need not be transmitted with a reliable packet as it is only an approximate that needs to be displayed on another players screen for example */
 		NData mPlayerEnergy;
+
+		NData mID;
 	}
 }

@@ -5,12 +5,20 @@
 #include "ReplicaNetGlue/GameObject.h"
 #include "ReplicaNetGlue/Plane.h"
 
+int AMyActorTest::sID = 0;
+
 // Sets default values
 AMyActorTest::AMyActorTest()
 {
 	SetReplicates(false);
 	SetReplicateMovement(false);
 	PrimaryActorTick.bCanEverTick = true;
+	mID = sID++;
+
+	std::string name = std::string(TCHAR_TO_UTF8(*GetName()));
+	char buffer[256];
+	sprintf(buffer, "Name '%s' and ID %d\n", name.c_str() , mID);
+	OutputDebugStringA(buffer);
 }
 
 // Called when the game starts or when spawned
@@ -19,7 +27,6 @@ void AMyActorTest::BeginPlay()
 	NetworkClientInit();
 
 	Super::BeginPlay();
-
 }
 
 void AMyActorTest::EndPlay(const EEndPlayReason::Type EndPlayReason)
@@ -36,29 +43,23 @@ void AMyActorTest::Tick(float DeltaTime)
 	// Try to attach any unowned network objects...
 	if (!mNetworkObject)
 	{
-		mNetworkObject = FindUnownedGameObject();
+		mNetworkObject = FindUnownedGameObject(Plane::StaticGetClassID() , mID);
 	}
 
 	Super::Tick(DeltaTime);
 
 	if (mNetworkObject)
 	{
-		if (mNetworkObject->mReplica)
-		{
-			if (mNetworkObject->mReplica->GetClassID() == Plane::StaticGetClassID())
-			{
-				Plane* plane = (Plane*)mNetworkObject;
+		Plane* plane = (Plane*)mNetworkObject;
 
-				FVector NewLocation;
-				NewLocation.X = plane->GetPosition().x;
-				NewLocation.Y = plane->GetPosition().y;
-				NewLocation.Z = plane->GetPosition().z;
+		FVector NewLocation;
+		NewLocation.X = plane->GetPosition().x;
+		NewLocation.Y = plane->GetPosition().y;
+		NewLocation.Z = plane->GetPosition().z;
 
-				FRotator NewRotation(0, 0, 0);
-				NewRotation.Yaw = plane->GetRotation().y;
+		FRotator NewRotation(0, 0, 0);
+		NewRotation.Yaw = plane->GetRotation().y;
 
-				SetActorLocationAndRotation(NewLocation, NewRotation);
-			}
-		}
+		SetActorLocationAndRotation(NewLocation, NewRotation);
 	}
 }

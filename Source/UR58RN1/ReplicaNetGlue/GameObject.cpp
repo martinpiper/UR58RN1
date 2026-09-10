@@ -90,7 +90,7 @@ void GameObject::Delete(void)
 }
 
 
-GameObject* FindUnownedGameObject(void)
+GameObject* FindUnownedGameObject(const int ofType, const int withID)
 {
 	if (!gNetwork)
 	{
@@ -107,9 +107,18 @@ GameObject* FindUnownedGameObject(void)
 		GameObject* test = *st;
 		if (!test->mOwned)
 		{
-			ret = test;
-			ret->mOwned = true;
-			break;
+			if (test->mReplica)
+			{
+				if (test->mReplica->GetClassID() == ofType)
+				{
+					if (test->mID == withID)
+					{
+						ret = test;
+						ret->mOwned = true;
+						break;
+					}
+				}
+			}
 		}
 		st++;
 	}

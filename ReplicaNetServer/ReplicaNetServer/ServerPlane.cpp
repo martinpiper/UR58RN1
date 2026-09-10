@@ -23,6 +23,9 @@ in the ROL file for this class are automatically updated when this object is all
 
 Plane::Plane()
 {
+	static int sID = 0;
+	mID = sID++;
+
 	mReplica = this;		// Setup our forward reference pointer
 	mPosition = D3DXVECTOR4(0,0,0,0);
 	mRotation = D3DXVECTOR4(0,0,0,0);

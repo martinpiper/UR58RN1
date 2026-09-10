@@ -18,5 +18,8 @@ The ROL file UR58RN1\Source\UR58RN1\ReplicaNetGlue\_Def_Example1.rol defines whi
 ## Game clients
 The Unreal project UR58RN1\UR58RN1.uproject has instances of MyActorTest class with attached static cube mesh. There is no Unreal replication for this class.\
 When the project runs it first tries to attach to a ReplicaNet session using "UR58RN1\Source\UR58RN1\ReplicaNetGlue\GameObject.cpp" and SessionJoin().\
-Next, instances of "UR58RN1\Source\UR58RN1\MyActorTest.cpp" will try to attach to any network replicated instances of the Plane class using FindUnownedGameObject(). The position and rotation are then read from the attached Plane class and set with SetActorLocationAndRotation().
+Next, instances of "UR58RN1\Source\UR58RN1\MyActorTest.cpp" will try to attach to any network replicated instances of the Plane class using FindUnownedGameObject(). The position and rotation are then read from the attached Plane class and set with SetActorLocationAndRotation().\
+Even an Unreal server instance is effectively a client of the ReplicaNet based server.\
+UMyGameInstance::OnStart() is used to ensure consistent existing object ID mapping to network object mapping.
+
 

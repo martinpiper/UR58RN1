@@ -76,9 +76,11 @@ public:
 	RNReplicaNet::ReplicaObject *mReplica;
 
 	bool mOwned;
+
+	int mID = -1;
 };
 
-GameObject* FindUnownedGameObject(void);
+GameObject* FindUnownedGameObject(const int ofType, const int withID);
 void PollGameOjects(void);
 
 #endif
