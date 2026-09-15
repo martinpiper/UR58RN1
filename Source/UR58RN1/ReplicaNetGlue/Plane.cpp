@@ -33,28 +33,6 @@ void Plane::PollIt(void)
 #endif
 
 /*
-This callback is used by the distance based prediction to calculate the distance to another object in our game
-*/
-float Plane::CalculateDistanceToObject(ReplicaObject *object)
-{
-	// This could be part of the GameObject base class
-/*
-	if (object->GetClassID() == _RO_Camera::StaticGetClassID())
-	{
-		Camera *gameobject = (Camera *) object;
-
-		D3DXVECTOR4 pos = gameobject->GetPosition();
-
-		pos.x = mPosition.x - pos.x;
-		pos.y = mPosition.y - pos.y;
-		pos.z = mPosition.z - pos.z;
-		return sqrtf( (pos.x*pos.x) + (pos.y*pos.y) + (pos.z*pos.z));
-	}
-*/
-	return RNReplicaNet::kReplicaObject_InfiniteDistance;
-}
-
-/*
 This callback returns true which means if a session quits then the fault tolerant
 mechanism makes the plane get transfered from the session that left to another session
 */

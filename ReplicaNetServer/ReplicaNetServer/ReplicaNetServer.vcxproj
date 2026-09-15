@@ -143,6 +143,7 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\UR58RN1\ReplicaNetGlue\_RO_Camera.cpp" />
     <ClCompile Include="..\..\Source\UR58RN1\ReplicaNetPublic\AmalgamatedReplicaNet.cpp" />
     <ClCompile Include="..\..\Source\UR58RN1\ReplicaNetGlue\GameObject.cpp" />
     <ClCompile Include="..\..\Source\UR58RN1\ReplicaNetGlue\Plane.cpp" />
@@ -152,14 +153,17 @@
     <ClCompile Include="ServerPlane.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\UR58RN1\ReplicaNetGlue\Camera.h" />
     <ClInclude Include="..\..\Source\UR58RN1\ReplicaNetGlue\GameObject.h" />
     <ClInclude Include="..\..\Source\UR58RN1\ReplicaNetGlue\Plane.h" />
     <ClInclude Include="..\..\Source\UR58RN1\ReplicaNetGlue\_Def_Example1.h" />
+    <ClInclude Include="..\..\Source\UR58RN1\ReplicaNetGlue\_RO_Camera.h" />
     <ClInclude Include="..\..\Source\UR58RN1\ReplicaNetGlue\_RO_Plane.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\ReadMe.md" />
     <None Include="..\..\Source\UR58RN1\ReplicaNetGlue\_Def_Example1.rol" />
+    <None Include="..\..\Source\UR58RN1\ReplicaNetGlue\_RO_Camera.rol" />
     <None Include="..\..\Source\UR58RN1\ReplicaNetGlue\_RO_Plane.rol" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -11,6 +11,7 @@ class USpringArmComponent;
 class UCameraComponent;
 class UInputAction;
 struct FInputActionValue;
+class Camera;
 
 DECLARE_LOG_CATEGORY_EXTERN(LogTemplateCharacter, Log, All);
 
@@ -32,6 +33,8 @@ class AUR58RN1Character : public ACharacter
 	UCameraComponent* FollowCamera;
 	
 protected:
+
+	virtual void Tick(float DeltaTime) override;
 
 	/** Jump Input Action */
 	UPROPERTY(EditAnywhere, Category="Input")
@@ -92,5 +95,7 @@ public:
 
 	/** Returns FollowCamera subobject **/
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
+
+	Camera* mNetworkObject = 0;
 };
 

@@ -84,6 +84,36 @@ void GameObject::PollIt(void)
 	printf("Default PollIt()\n");
 };
 
+float GameObject::CalculateDistanceToObject(GameObject* gameobject)
+{
+	if (gameobject)
+	{
+		D3DXVECTOR4 pos;
+		D3DXVECTOR4 otherpos;
+		bool ret = gameobject->GetPosition(otherpos);
+
+		if (ret)
+		{
+			ret = GetPosition(pos);
+			if (ret)
+			{
+				pos.x = otherpos.x - pos.x;
+				pos.y = otherpos.y - pos.y;
+				pos.z = otherpos.z - pos.z;
+				float distance = sqrtf((pos.x * pos.x) + (pos.y * pos.y) + (pos.z * pos.z));
+				if (gameobject->mReplica)
+				{
+					// Debug distance spew
+//					printf("Calc distance %f to %d:%d:%d\n", distance, gameobject->mReplica->GetClassID(), gameobject->mReplica->GetSessionID(), gameobject->mReplica->GetUniqueID());
+				}
+				return distance;
+			}
+		}
+	}
+
+	return RNReplicaNet::kReplicaObject_InfiniteDistance;
+}
+
 void GameObject::Delete(void)
 {
 	mDeleteMe = true;

@@ -11,6 +11,7 @@ object Plane
 	extern AMemberFunction(float);
 
 	Certain;
+	SetOpaqueType(GameObject);
 
 /* The same as the Camera object, we define which member variables from the Plane class can be accessed by ReplicaNet */
 	networking
@@ -38,12 +39,12 @@ object Plane
 		Predict_Float mPosition.x;
 		{
 			SetMinError(0.5f);
-			SetMinDistance(50.0f);
-			SetMaxError(10.5f);
-			SetMaxDistance(200.0f);
+			SetMinDistance(300.0f);
+			SetMaxError(100.5f);
+			SetMaxDistance(10000.0f);
 			Quadratic();
 
-			SetSnapToDifference(10.0f);
+			SetSnapToDifference(100.0f);
 
 //			SetUpdateDelayMinimum(2.0f);
 //			SetForceSendTimeDelay(0.01f);
@@ -54,12 +55,12 @@ object Plane
 		Predict_Float mPosition.y;
 		{
 			SetMinError(0.5f);
-			SetMinDistance(50.0f);
-			SetMaxError(10.5f);
-			SetMaxDistance(200.0f);
+			SetMinDistance(300.0f);
+			SetMaxError(100.5f);
+			SetMaxDistance(10000.0f);
 			Quadratic();
 
-			SetSnapToDifference(10.0f);
+			SetSnapToDifference(100.0f);
 
 //			SetUpdateDelayMinimum(2.0f);
 //			SetForceSendTimeDelay(0.01f);
@@ -70,12 +71,12 @@ object Plane
 		Predict_Float mPosition.z;
 		{
 			SetMinError(0.5f);
-			SetMinDistance(50.0f);
-			SetMaxError(10.5f);
-			SetMaxDistance(200.0f);
+			SetMinDistance(300.0f);
+			SetMaxError(100.5f);
+			SetMaxDistance(10000.0f);
 			Quadratic();
 
-			SetSnapToDifference(10.0f);
+			SetSnapToDifference(100.0f);
 
 //			SetUpdateDelayMinimum(2.0f);
 //			SetForceSendTimeDelay(0.01f);
@@ -86,37 +87,37 @@ object Plane
 
 		Predict_Float mRotation.x;
 		{
-			SetMinError(0.01f);
-			SetMinDistance(0.1f);
-			SetMaxError(0.15f);
-			SetMaxDistance(50.0f);
+			SetMinError(0.1f);
+			SetMinDistance(500.0f);
+			SetMaxError(5.0f);
+			SetMaxDistance(5000.0f);
 			Quadratic();
 
-			SetSnapToDifference(0.1f);
+			SetSnapToDifference(1.1f);
 
 			SetDeltaShortFloat();
 		}
 		Predict_Float mRotation.y;
 		{
-			SetMinError(0.01f);
-			SetMinDistance(0.1f);
-			SetMaxError(0.15f);
-			SetMaxDistance(50.0f);
+			SetMinError(0.1f);
+			SetMinDistance(500.0f);
+			SetMaxError(5.0f);
+			SetMaxDistance(5000.0f);
 			Quadratic();
 
-			SetSnapToDifference(0.1f);
+			SetSnapToDifference(1.1f);
 
 			SetDeltaShortFloat();
 		}
 		Predict_Float mRotation.z;
 		{
-			SetMinError(0.01f);
-			SetMinDistance(0.1f);
-			SetMaxError(0.15f);
-			SetMaxDistance(50.0f);
+			SetMinError(0.1f);
+			SetMinDistance(500.0f);
+			SetMaxError(5.0f);
+			SetMaxDistance(5000.0f);
 			Quadratic();
 
-			SetSnapToDifference(0.1f);
+			SetSnapToDifference(1.5f);
 
 			SetDeltaShortFloat();
 		}

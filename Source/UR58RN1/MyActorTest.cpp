@@ -53,9 +53,9 @@ void AMyActorTest::Tick(float DeltaTime)
 		Plane* plane = (Plane*)mNetworkObject;
 
 		FVector NewLocation;
-		NewLocation.X = plane->GetPosition().x;
-		NewLocation.Y = plane->GetPosition().y;
-		NewLocation.Z = plane->GetPosition().z;
+		NewLocation.X = mNetworkObject->GetPosition().x;
+		NewLocation.Y = mNetworkObject->GetPosition().y;
+		NewLocation.Z = mNetworkObject->GetPosition().z;
 
 		FRotator NewRotation(0, 0, 0);
 		NewRotation.Yaw = plane->GetRotation().y;

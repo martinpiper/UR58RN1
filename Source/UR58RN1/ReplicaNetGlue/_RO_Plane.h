@@ -12,6 +12,7 @@ class _RO_Plane : public RNReplicaNet::ReplicaObject
 	void Call_AMemberFunction(float);
 	typedef void(tDBFV_AMemberFunction)(float);
 _RO_DO_REPLICAOBJECT_MAKECERTAIN()
+	_RO_DEF_REPLICAOBJECT_INTERNAL_SETUPOPAQUEPOINTER()
 	_RO_DEF_REGISTERDATABLOCKS(Plane)
 };
 #endif

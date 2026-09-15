@@ -24,13 +24,16 @@ public:
 	Plane();
 	virtual ~Plane();
 
+	CALCULATE_DISTANCE();
+
 	void Render(void);
 
 	void PollIt(void);
 
-	D3DXVECTOR4 GetPosition(void)
+	virtual bool GetPosition(D3DXVECTOR4& input)
 	{
-		return mPosition;
+		input = mPosition;
+		return true;
 	}
 
 	void SetPosition(D3DXVECTOR4 position)
@@ -44,7 +47,6 @@ public:
 		return mRotation;
 	}
 
-	float CalculateDistanceToObject(RNReplicaNet::ReplicaObject *object);
 
 	bool ApproveFault(void);
 

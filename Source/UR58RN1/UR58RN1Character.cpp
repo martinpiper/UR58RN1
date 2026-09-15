@@ -11,9 +11,14 @@
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
 #include "UR58RN1.h"
+#include "RNReplicaNet/Inc/ReplicaNet.h"
+#include "RNReplicaNet/Inc/ReplicaObject.h"
+#include "ReplicaNetGlue/Camera.h"
 
 AUR58RN1Character::AUR58RN1Character()
 {
+	PrimaryActorTick.bCanEverTick = true;
+
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
 		
@@ -130,4 +135,25 @@ void AUR58RN1Character::DoJumpEnd()
 {
 	// signal the character to stop jumping
 	StopJumping();
+}
+
+void AUR58RN1Character::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+	if (IsLocallyControlled())
+	{
+		// To get distance optimised updates to this session, we register an observer with a position that mirrors this locally controller player.
+		// This position could also be the camera position of this locally controller player.
+		if (!mNetworkObject)
+		{
+			mNetworkObject = new Camera();
+			mNetworkObject->Publish();
+			gNetwork->SetObserver(mNetworkObject);
+		}
+		FVector pos = GetActorLocation();
+		mNetworkObject->mPosition.x = pos.X;
+		mNetworkObject->mPosition.y = pos.Y;
+		mNetworkObject->mPosition.z = pos.Z;
+	}
 }

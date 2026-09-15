@@ -57,11 +57,21 @@ public:
 
 	virtual void PollIt(void);
 
-	virtual D3DXVECTOR4 GetPosition(void)
+	// Some objects can return position, others do not
+	virtual bool GetPosition(D3DXVECTOR4& input)
 	{
-		return D3DXVECTOR4(0,0,0,0);
+		return false;
 	}
 
+	// Always returns a vector position
+	D3DXVECTOR4 GetPosition(void)
+	{
+		D3DXVECTOR4 pos(0,0,0,0);
+		GetPosition(pos);
+		return pos;
+	}
+
+	float CalculateDistanceToObject(GameObject* object);
 
 	/**
 	 * A delete method for a game object since deletion of a class while in a member function is not very good design
@@ -82,5 +92,13 @@ public:
 
 GameObject* FindUnownedGameObject(const int ofType, const int withID);
 void PollGameOjects(void);
+
+#define CALCULATE_DISTANCE()	\
+float CalculateDistanceToObject(RNReplicaNet::ReplicaObject* object)	\
+{	\
+	GameObject* gameobject = (GameObject*)object->GetOpaquePointer();	\
+	return GameObject::CalculateDistanceToObject(gameobject);	\
+}
+
 
 #endif

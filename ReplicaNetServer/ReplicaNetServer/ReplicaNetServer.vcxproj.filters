@@ -36,6 +36,9 @@
     <ClCompile Include="ServerPlane.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\UR58RN1\ReplicaNetGlue\_RO_Camera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\UR58RN1\ReplicaNetGlue\GameObject.h">
@@ -50,10 +53,17 @@
     <ClInclude Include="..\..\Source\UR58RN1\ReplicaNetGlue\_RO_Plane.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\UR58RN1\ReplicaNetGlue\_RO_Camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\UR58RN1\ReplicaNetGlue\Camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Source\UR58RN1\ReplicaNetGlue\_Def_Example1.rol" />
     <None Include="..\..\Source\UR58RN1\ReplicaNetGlue\_RO_Plane.rol" />
     <None Include="..\..\ReadMe.md" />
+    <None Include="..\..\Source\UR58RN1\ReplicaNetGlue\_RO_Camera.rol" />
   </ItemGroup>
 </Project>

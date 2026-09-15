@@ -1,0 +1,41 @@
+/* The Camera object */
+object Camera
+{
+/* This object uses the Predict_Float type only so include the definition here */
+	datablock Predict_Float;
+	SetOpaqueType(GameObject);
+	Reliable();
+
+/* Define each member variable from the Camera class that can be accessed by ReplicaNet */
+	networking
+	{
+/* The Camera::mPosition.x member variable uses the Predict_Float data type and sets the boundaries for minimum and maximum error based on the distances supplied */
+/* This member variable also used the Quadratic() fall off function to provide a better fall off curve based on distance */
+		Predict_Float mPosition.x;
+		{
+			SetMinError(50.5f);
+			SetMinDistance(50.0f);
+			SetMaxError(700.5f);
+			SetMaxDistance(10000.0f);
+			Quadratic();
+		}
+/* See the comment above, the same applies here expcept the Camera::mPosition.y member variable is used */
+		Predict_Float mPosition.y;
+		{
+			SetMinError(50.5f);
+			SetMinDistance(50.0f);
+			SetMaxError(700.5f);
+			SetMaxDistance(10000.0f);
+			Quadratic();
+		}
+/* See the comment above, the same applies here expcept the Camera::mPosition.z member variable is used */
+		Predict_Float mPosition.z;
+		{
+			SetMinError(50.5f);
+			SetMinDistance(50.0f);
+			SetMaxError(700.5f);
+			SetMaxDistance(10000.0f);
+			Quadratic();
+		}
+	}
+}

@@ -22,4 +22,7 @@ Next, instances of "UR58RN1\Source\UR58RN1\MyActorTest.cpp" will try to attach t
 Even an Unreal server instance is effectively a client of the ReplicaNet based server.\
 UMyGameInstance::OnStart() is used to ensure consistent existing object ID mapping to network object mapping.
 
-
+To enable the distance based object propagation, which considerably improves network bandwidth, each AUR58RN1Character (ACharacter) that IsLocallyControlled will create a Camera network object.\
+This invisible object is registered as an observer (SetObserver) of the local session, this communicates the approximate player view position to the server.\
+Basically, objects closer to a player's observer position will send more accurate updates, and objects further away will send fewer less accurate updates.\
+The object distance calculation is enabled with CALCULATE_DISTANCE, which implements the callback CalculateDistanceToObject.
