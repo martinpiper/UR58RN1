@@ -61,9 +61,11 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\Source\UR58RN1\ReplicaNetGlue\_Def_Example1.rol" />
-    <None Include="..\..\Source\UR58RN1\ReplicaNetGlue\_RO_Plane.rol" />
     <None Include="..\..\ReadMe.md" />
-    <None Include="..\..\Source\UR58RN1\ReplicaNetGlue\_RO_Camera.rol" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\Source\UR58RN1\ReplicaNetGlue\_RO_Plane.rol" />
+    <CustomBuild Include="..\..\Source\UR58RN1\ReplicaNetGlue\_RO_Camera.rol" />
+    <CustomBuild Include="..\..\Source\UR58RN1\ReplicaNetGlue\_Def_Example1.rol" />
   </ItemGroup>
 </Project>

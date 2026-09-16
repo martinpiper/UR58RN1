@@ -16,21 +16,6 @@ object Plane
 /* The same as the Camera object, we define which member variables from the Plane class can be accessed by ReplicaNet */
 	networking
 	{
-/* Notice that the minimum and maximum errors are quite strict for this object, this is because the object needs a */
-/* good balance between network bandwidth and actual displayed accuracy on screen */
-/* You can try changing the Quadratic(); to Linear(); to see the difference this makes */
-/* Also try changing the error and distance values to get a feel for how smaller errors lead to high bytes/second being transmitted */
-
-// Try adding this line, remove the comment, to each of the position DataBlock definitions to see the effect of using SetUpdateDelayMinimum()
-// This stops the plane position updating due to DataBlock filter updates until 2 seconds has passed.
-//	SetUpdateDelayMinimum(2.0f);
-
-// Try adding these two lines, remove the comments, to each of the position DataBlock definitions to see the effect of using SetForceSendMaximumUpdates()
-// This forces 10 extra updates after each DataBlock filter update at a delay of 0.01 of a second. The result of this is that
-// the bandwidth used is much higher for each plane.
-//	SetForceSendTimeDelay(0.01f);
-//	SetForceSendMaximumUpdates(10);
-
 		Function AMemberFunction
 		{
 			Reliable;

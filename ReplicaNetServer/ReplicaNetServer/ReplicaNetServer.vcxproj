@@ -162,9 +162,59 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\ReadMe.md" />
-    <None Include="..\..\Source\UR58RN1\ReplicaNetGlue\_Def_Example1.rol" />
-    <None Include="..\..\Source\UR58RN1\ReplicaNetGlue\_RO_Camera.rol" />
-    <None Include="..\..\Source\UR58RN1\ReplicaNetGlue\_RO_Plane.rol" />
+    <CustomBuild Include="..\..\Source\UR58RN1\ReplicaNetGlue\_Def_Example1.rol">
+      <FileType>Document</FileType>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </ExcludedFromBuild>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"C:\work\ReplicaNetPublic\ReplicaNetPublic\RNROLCompiler\bin\RNROLCompiler.exe" "%(FullPath)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"C:\work\ReplicaNetPublic\ReplicaNetPublic\RNROLCompiler\bin\RNROLCompiler.exe" "%(FullPath)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"C:\work\ReplicaNetPublic\ReplicaNetPublic\RNROLCompiler\bin\RNROLCompiler.exe" "%(FullPath)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"C:\work\ReplicaNetPublic\ReplicaNetPublic\RNROLCompiler\bin\RNROLCompiler.exe" "%(FullPath)"</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RelativeDir)%(Filename).cpp;%(RelativeDir)%(Filename).h</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RelativeDir)%(Filename).cpp;%(RelativeDir)%(Filename).h</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(RelativeDir)%(Filename).cpp;%(RelativeDir)%(Filename).h</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(RelativeDir)%(Filename).cpp;%(RelativeDir)%(Filename).h</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Compile: %(Filename)%(Extension)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Compile: %(Filename)%(Extension)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Compile: %(Filename)%(Extension)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Compile: %(Filename)%(Extension)</Message>
+    </CustomBuild>
+    <CustomBuild Include="..\..\Source\UR58RN1\ReplicaNetGlue\_RO_Camera.rol">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"C:\work\ReplicaNetPublic\ReplicaNetPublic\RNROLCompiler\bin\RNROLCompiler.exe" "%(FullPath)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"C:\work\ReplicaNetPublic\ReplicaNetPublic\RNROLCompiler\bin\RNROLCompiler.exe" "%(FullPath)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"C:\work\ReplicaNetPublic\ReplicaNetPublic\RNROLCompiler\bin\RNROLCompiler.exe" "%(FullPath)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"C:\work\ReplicaNetPublic\ReplicaNetPublic\RNROLCompiler\bin\RNROLCompiler.exe" "%(FullPath)"</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RelativeDir)%(Filename).cpp;%(RelativeDir)%(Filename).h</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RelativeDir)%(Filename).cpp;%(RelativeDir)%(Filename).h</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(RelativeDir)%(Filename).cpp;%(RelativeDir)%(Filename).h</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(RelativeDir)%(Filename).cpp;%(RelativeDir)%(Filename).h</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Compile: %(Filename)%(Extension)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Compile: %(Filename)%(Extension)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Compile: %(Filename)%(Extension)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Compile: %(Filename)%(Extension)</Message>
+    </CustomBuild>
+    <CustomBuild Include="..\..\Source\UR58RN1\ReplicaNetGlue\_RO_Plane.rol">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"C:\work\ReplicaNetPublic\ReplicaNetPublic\RNROLCompiler\bin\RNROLCompiler.exe" "%(FullPath)"</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(RelativeDir)%(Filename).cpp;%(RelativeDir)%(Filename).h</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RelativeDir)%(Filename).cpp;%(RelativeDir)%(Filename).h</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RelativeDir)%(Filename).cpp;%(RelativeDir)%(Filename).h</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(RelativeDir)%(Filename).cpp;%(RelativeDir)%(Filename).h</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">"C:\work\ReplicaNetPublic\ReplicaNetPublic\RNROLCompiler\bin\RNROLCompiler.exe" "%(FullPath)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"C:\work\ReplicaNetPublic\ReplicaNetPublic\RNROLCompiler\bin\RNROLCompiler.exe" "%(FullPath)"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"C:\work\ReplicaNetPublic\ReplicaNetPublic\RNROLCompiler\bin\RNROLCompiler.exe" "%(FullPath)"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Compile: %(Filename)%(Extension)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Compile: %(Filename)%(Extension)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Compile: %(Filename)%(Extension)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Compile: %(Filename)%(Extension)</Message>
+    </CustomBuild>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
