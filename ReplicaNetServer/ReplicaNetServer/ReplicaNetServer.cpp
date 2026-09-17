@@ -6,6 +6,8 @@
 #include "GameObject.h"
 #include "RNReplicaNet/Inc/ReplicaNet.h"
 #include "RNReplicaNet/Inc/ReplicaObject.h"
+#include "RNXPURL/Inc/XPURL.h"
+#include "RNXPURL/Inc/DebugHandler.h"
 #include "Plane.h"
 #include <random>
 
@@ -21,6 +23,11 @@ int main()
 	// Disconnect ReplicaNet polling from the session and transport threads.
 	gNetwork->SetPollLayerBelow(false);
 	gNetwork->SetPollLayerBelowForXPSession(false);
+
+	RNReplicaNet::XPURL::RegisterDebugHandler(new RNReplicaNet::DebugHandler());
+	RNReplicaNet::XPURL::GetDebugHandler()->EnableVisualDebuggerSocket();
+
+
 	gNetwork->SessionCreate("ReplicaNetServerUnreal1");
 
 	std::random_device rd;
