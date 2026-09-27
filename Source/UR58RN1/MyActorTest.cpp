@@ -24,15 +24,13 @@ AMyActorTest::AMyActorTest()
 // Called when the game starts or when spawned
 void AMyActorTest::BeginPlay()
 {
-	NetworkClientInit();
-
 	Super::BeginPlay();
+	SetActorHiddenInGame(true);
 }
 
 void AMyActorTest::EndPlay(const EEndPlayReason::Type EndPlayReason)
 {
 	mNetworkObject = 0;
-	NetworkClientDisconnect();
 
 	Super::EndPlay(EndPlayReason);
 }
@@ -44,12 +42,26 @@ void AMyActorTest::Tick(float DeltaTime)
 	if (!mNetworkObject)
 	{
 		mNetworkObject = FindUnownedGameObject(Plane::StaticGetClassID() , mID);
+		if (mNetworkObject)
+		{
+			// If we have a network object then show this actor
+			SetActorHiddenInGame(false);
+		}
 	}
 
 	Super::Tick(DeltaTime);
 
 	if (mNetworkObject)
 	{
+		// Check if the object still exists before using it
+		if (!gGameObjects.contains(mNetworkObject))
+		{
+			mNetworkObject = 0;
+			SetActorHiddenInGame(true);
+			return;
+		}
+
+
 		Plane* plane = (Plane*)mNetworkObject;
 
 		FVector NewLocation;

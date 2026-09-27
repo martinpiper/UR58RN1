@@ -27,8 +27,11 @@ void NetworkClientInit(void)
 	{
 		gNetwork = new RNReplicaNet::ReplicaNet();
 
-		gNetwork->SetAutomaticPoll();
+		// Poll() is called within the scope of UMyGameInstance::MyPreTickFunction()
+		gNetwork->SetManualPoll();
 		// Disconnect ReplicaNet polling from the session and transport threads.
+		gNetwork->SetAutomaticPollXPSession();
+		gNetwork->SetAutomaticPollXPURL();
 		gNetwork->SetPollLayerBelow(false);
 		gNetwork->SetPollLayerBelowForXPSession(false);
 

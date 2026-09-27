@@ -56,6 +56,23 @@ int main()
 		object->Publish();
 	}
 
+	// And create more objects in another area
+	for (auto i = 0; i < 20; i++)
+	{
+		Plane* object = new Plane();
+		// These move differently
+		object->mTimeOffset = distribTimeoffset(gen) * 2.0f;
+		object->mPosScaleX = distribScaleX(gen) / 2.0f;
+		object->mPosScaleY = distribScaleY(gen) / 2.0f;
+		object->mPosScaleZ = distribScaleZ(gen) * 2.0f;
+		object->mTimeScaleX = 5.0f / (distribScaleX(gen) + 10.0f);
+		object->mTimeScaleY = 10.0f / (distribScaleY(gen) + 10.0f);
+		object->mTimeScaleZ = 30.0f / (distribScaleZ(gen) + 1.0f);
+		// Different position in the adjacent area
+		object->SetPosition(D3DXVECTOR4(3500.0f + distribPosX(gen), distribPosY(gen), distribPosZ(gen), 0));
+		object->Publish();
+	}
+
 	RNReplicaNet::SysTime timer;
 
 	while (true)
